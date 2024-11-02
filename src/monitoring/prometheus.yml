@@ -1,1 +1,11 @@
+global:
+  scrape_interval: 15s
 
+scrape_configs:
+  - job_name: 'flux_backend'
+    static_configs:
+      - targets: ['flux_backend:8000']
+
+  - job_name: 'flux_db'
+    static_configs:
+      - targets: ['flux_db:5432']
