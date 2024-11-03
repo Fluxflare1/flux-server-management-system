@@ -2,6 +2,26 @@
 
 
 
+
+
+# Logging configuration
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
+
+
+
 # JWT settings
 SECRET_KEY = 'your-secret-key'  # Replace with a secure key in production
 
