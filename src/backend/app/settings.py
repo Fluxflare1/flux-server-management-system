@@ -1,5 +1,13 @@
 
 
+
+# CORS setup
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend URL
+]
+
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
