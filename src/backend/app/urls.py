@@ -2,6 +2,16 @@
 
 
 # src/backend/app/urls.py
+from .views.resource_monitoring import ResourceMonitoringView
+
+urlpatterns += [
+    path('metrics/', ResourceMonitoringView.as_view(), name='resource_metrics'),
+]
+
+
+
+
+# src/backend/app/urls.py
 from django.urls import path
 from .views.server_management import ServerManagementView
 
