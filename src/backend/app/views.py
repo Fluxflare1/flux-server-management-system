@@ -1,3 +1,26 @@
+
+
+
+import psutil
+
+@require_http_methods(["GET"])
+def get_system_metrics(request):
+    cpu_usage = psutil.cpu_percent(interval=1)
+    memory_info = psutil.virtual_memory()._asdict()
+    storage_info = psutil.disk_usage('/')._asdict()
+
+    metrics = {
+        "cpu_usage": cpu_usage,
+        "memory_info": memory_info,
+        "storage_info": storage_info,
+    }
+
+    return JsonResponse(metrics)
+
+
+
+
+
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import subprocess
