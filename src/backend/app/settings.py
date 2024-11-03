@@ -1,5 +1,9 @@
 
 
+# Add custom exception handler
+REST_FRAMEWORK['EXCEPTION_HANDLER'] = 'app.exceptions.custom_exception_handler'
+
+
 
 # Caching settings
 CACHES = {
