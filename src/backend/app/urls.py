@@ -1,6 +1,14 @@
 
 
 
+# src/backend/app/urls.py
+from .views.version_control import VersionControlView
+
+urlpatterns += [
+    path('git/clone/', VersionControlView.as_view(), name='clone_repository'),
+]
+
+
 
 # src/backend/app/urls.py
 from .views.user_management import UserViewSet, RoleViewSet
