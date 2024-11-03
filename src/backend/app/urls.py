@@ -1,6 +1,20 @@
 
 
 
+
+# src/backend/app/urls.py
+from .views.user_management import UserViewSet, RoleViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'roles', RoleViewSet)
+
+urlpatterns += router.urls
+
+
+
+
 # src/backend/app/urls.py
 from .views.resource_monitoring import ResourceMonitoringView
 
