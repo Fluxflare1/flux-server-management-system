@@ -1,5 +1,30 @@
 
 
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: flux_management_db
+      POSTGRES_USER: flux_user
+      POSTGRES_PASSWORD: secure_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ../src/backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+
+
 
 
 version: '3.8'
