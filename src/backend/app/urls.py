@@ -1,5 +1,16 @@
 
 
+
+from django.urls import path
+from .monitoring import views
+
+urlpatterns = [
+    path('health/', views.health_check),
+]
+
+
+
+
 # src/backend/app/urls.py
 from django.urls import include, path
 
