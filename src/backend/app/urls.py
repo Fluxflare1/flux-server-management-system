@@ -1,6 +1,18 @@
 
 
 
+from django.urls import path, include
+
+urlpatterns = [
+    path('server/', include('app.server_management.urls')),
+    path('monitoring/', include('app.monitoring.urls')),
+    path('users/', include('app.user_management.urls')),
+    path('version_control/', include('app.version_control.urls')),
+]
+
+
+
+
 from django.conf import settings
 from django.conf.urls.static import static
 
