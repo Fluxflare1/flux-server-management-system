@@ -1,5 +1,20 @@
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'flux_management_db',
+        'USER': 'flux_user',
+        'PASSWORD': 'secure_password',
+        'HOST': 'db',  # Docker service name
+        'PORT': '5432',
+    }
+}
+
+
+
+
+
 # Add custom exception handler
 REST_FRAMEWORK['EXCEPTION_HANDLER'] = 'app.exceptions.custom_exception_handler'
 
