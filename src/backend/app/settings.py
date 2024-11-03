@@ -1,3 +1,10 @@
+# Test-specific settings
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
+    }
+    LOGGING['handlers']['file']['filename'] = 'test.log'
 
 
 
