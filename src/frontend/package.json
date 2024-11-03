@@ -1,1 +1,11 @@
+
+
+
+"scripts": {
+    "start": "REACT_APP_API_BASE_URL=http://localhost:8000 react-scripts start",
+    "build": "REACT_APP_API_BASE_URL=http://localhost:8000 react-scripts build"
+}
+
+
+
 "proxy": "http://flux_backend:8000",
