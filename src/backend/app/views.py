@@ -1,5 +1,35 @@
 
 
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def create_user(request):
+    # Logic to create a new user
+    return JsonResponse({"message": "User created successfully"})
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_user(request, user_id):
+    # Logic to retrieve a specific user by ID
+    return JsonResponse({"message": f"User {user_id} details retrieved"})
+
+@csrf_exempt
+@require_http_methods(["PUT"])
+def update_user(request, user_id):
+    # Logic to update user details
+    return JsonResponse({"message": f"User {user_id} updated successfully"})
+
+@csrf_exempt
+@require_http_methods(["DELETE"])
+def delete_user(request, user_id):
+    # Logic to delete a user by ID
+    return JsonResponse({"message": f"User {user_id} deleted successfully"})
+
+
+
 
 import psutil
 
