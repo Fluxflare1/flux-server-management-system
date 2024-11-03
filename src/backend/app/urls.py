@@ -1,6 +1,21 @@
 
 
 
+# src/backend/app/urls.py
+from django.urls import path
+from .views.server_management import ServerManagementView
+
+urlpatterns = [
+    path('server/create/', ServerManagementView.as_view(), name='create_server'),
+    path('server/<int:pk>/start/', ServerManagementView.as_view(), name='start_server'),
+    path('server/<int:pk>/stop/', ServerManagementView.as_view(), name='stop_server'),
+    path('server/<int:pk>/delete/', ServerManagementView.as_view(), name='delete_server'),
+]
+
+
+
+
+
 from django.urls import path, include
 
 urlpatterns = [
