@@ -1,4 +1,18 @@
 
+
+
+
+# src/backend/app/tenancy/models.py
+
+from django.db import models
+
+class Tenant(models.Model):
+    name = models.CharField(max_length=100)
+    # Add tenant-specific fields here
+
+
+
+
 from django.db import models
 
 class Tenant(models.Model):
