@@ -1,5 +1,14 @@
 
 
+
+# src/backend/app/settings.py
+
+PAYSTACK_SECRET_KEY = "your_paystack_secret_key"
+PAYSTACK_PUBLIC_KEY = "your_paystack_public_key"
+
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
