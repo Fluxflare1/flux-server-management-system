@@ -15,6 +15,14 @@ def create_invoice(request):
 
 
 
+from .monitoring.aws_cloudwatch import send_metric
+
+def some_view(request):
+    try:
+        # View logic
+        send_metric('SomeMetric', 1)
+    except Exception as e:
+        log_error(str(e))
 
 
 
