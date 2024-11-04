@@ -1,4 +1,25 @@
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/app.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'myapp': {  # Replace 'myapp' with your app's name
+            'handlers': ['file'],
+            'level': 'INFO',
+        },
+    },
+}
 
 
 # src/backend/app/settings.py
