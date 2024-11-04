@@ -1,3 +1,14 @@
+
+
+from .rbac import role_required
+
+@role_required(['super_admin'])
+def manage_tenant(request):
+    # Tenant management logic here
+    pass
+
+
+
 from rest_framework import viewsets
 from .models import Tenant, TenantResource
 from .serializers import TenantSerializer, TenantResourceSerializer
