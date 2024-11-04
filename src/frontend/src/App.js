@@ -1,3 +1,25 @@
+
+
+
+
+// src/frontend/src/App.js
+
+import Payment from "./components/Payments/Payment";
+
+function App() {
+    return (
+        <div className="App">
+            {/* Other routes */}
+            <Route path="/payment" component={Payment} />
+        </div>
+    );
+}
+
+export default App;
+
+
+
+
 import React, { useEffect, useState } from 'react';
 
 function App() {
