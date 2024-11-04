@@ -1,5 +1,22 @@
 
 
+from .utils.validation import validate_positive_integer, validate_email
+
+def create_invoice(request):
+    amount = request.POST.get('amount')
+    user_email = request.POST.get('user_email')
+
+    try:
+        validate_positive_integer(amount, "Amount")
+        validate_email(user_email)
+        # Proceed with invoice creation
+    except ValueError as e:
+        return JsonResponse({"error": str(e)}, status=400)
+
+
+
+
+
 
 from django.shortcuts import render
 from django.http import JsonResponse
