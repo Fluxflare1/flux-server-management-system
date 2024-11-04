@@ -2,6 +2,17 @@
 
 
 # src/backend/app/urls.py
+
+from django.urls import path, include
+
+urlpatterns = [
+    # ... other paths
+    path("payments/", include("app.payments.urls")),
+]
+
+
+
+# src/backend/app/urls.py
 from .views.version_control import VersionControlView
 
 urlpatterns += [
