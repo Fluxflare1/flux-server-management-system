@@ -1,5 +1,12 @@
 
 
+@role_required(['admin', 'super_admin'])
+def view_invoices(request):
+    # Invoice viewing logic here
+    pass
+
+
+
 from rest_framework import viewsets
 from .models import Invoice, Payment, UsageRecord
 from .serializers import InvoiceSerializer, PaymentSerializer, UsageRecordSerializer
