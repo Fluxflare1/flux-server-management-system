@@ -1,5 +1,30 @@
 
 
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import ReportSchedule
+
+def create_report_schedule(request):
+    if request.method == 'POST':
+        # Parse and save report scheduling preferences
+        # e.g., frequency, report_type, etc.
+        data = json.loads(request.body)
+        new_schedule = ReportSchedule.objects.create(
+            user=request.user,
+            report_type=data['report_type'],
+            frequency=data['frequency']
+        )
+        return JsonResponse({'status': 'success', 'schedule_id': new_schedule.id})
+
+def fetch_scheduled_reports(request):
+    # Return a list of scheduled reports based on the user's settings
+    reports = ReportSchedule.objects.filter(user=request.user)
+    return JsonResponse(list(reports.values()), safe=False)
+
+
+
+
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
