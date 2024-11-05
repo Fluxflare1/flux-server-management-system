@@ -1,11 +1,6 @@
 
 
 
-CELERY_TASK_RETRY = True
-CELERY_RETRY_BACKOFF = True  # Linear backoff for retries
-
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
