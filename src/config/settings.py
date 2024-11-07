@@ -1,3 +1,28 @@
+
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+env_path = os.path.join('config/environments', 'development.env')
+load_dotenv(dotenv_path=env_path)
+
+# Environment configurations
+AUTO_OS_UPDATE_ENABLED = os.getenv('AUTO_OS_UPDATE_ENABLED', 'false').lower() == 'true'
+OS_UPDATE_INTERVAL_DAYS = int(os.getenv('OS_UPDATE_INTERVAL_DAYS', 7))
+
+# Linux configurations
+LINUX_PACKAGE_MANAGER = os.getenv('LINUX_PACKAGE_MANAGER', 'apt')
+LINUX_UPDATE_COMMAND = os.getenv('LINUX_UPDATE_COMMAND', 'sudo apt update && sudo apt upgrade -y')
+LINUX_INSTALL_COMMAND = os.getenv('LINUX_INSTALL_COMMAND', 'sudo apt install -y')
+
+# Windows configurations
+WINDOWS_PACKAGE_MANAGER = os.getenv('WINDOWS_PACKAGE_MANAGER', 'choco')
+WINDOWS_UPDATE_COMMAND = os.getenv('WINDOWS_UPDATE_COMMAND', 'choco upgrade all -y')
+WINDOWS_INSTALL_COMMAND = os.getenv('WINDOWS_INSTALL_COMMAND', 'choco install')
+
+
+
+
 import os
 from dotenv import load_dotenv
 
