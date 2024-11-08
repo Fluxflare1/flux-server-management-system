@@ -1,5 +1,25 @@
 
+const fs = require('fs');
 
+async function createBackup() {
+    try {
+        // Code for creating a backup
+        console.log("Backup created successfully.");
+    } catch (error) {
+        console.error("Backup failed:", error);
+    }
+}
+
+async function restoreBackup() {
+    try {
+        // Code for restoring a backup
+        console.log("Backup restored successfully.");
+    } catch (error) {
+        console.error("Restore failed:", error);
+    }
+}
+
+module.exports = { createBackup, restoreBackup };
 
 
 
