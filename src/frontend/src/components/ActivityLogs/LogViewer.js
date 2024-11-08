@@ -1,3 +1,20 @@
+
+
+import React from 'react';
+
+function LogViewer() {
+    return (
+        <div>
+            <h2>Activity Log</h2>
+            {/* Display activity logs here */}
+        </div>
+    );
+}
+
+export default LogViewer;
+
+
+
 // frontend/src/components/ActivityLogs/LogViewer.js
 import React, { useEffect, useState } from 'react';
 import { getActivityLogs } from '../../services/logService';
