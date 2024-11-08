@@ -1,3 +1,21 @@
+
+
+import React from 'react';
+
+function InvoiceView() {
+    return (
+        <div>
+            <h2>Your Invoices</h2>
+            {/* Render invoices list here */}
+        </div>
+    );
+}
+
+export default InvoiceView;
+
+
+
+
 import React from 'react';
 
 function InvoiceView({ invoice }) {
