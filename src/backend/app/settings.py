@@ -1,5 +1,14 @@
 
 
+# settings.py - Include the Offline Fallback Middleware
+
+MIDDLEWARE = [
+    # Other middleware...
+    'backend.middleware.offline_fallback.OfflineFallbackMiddleware',
+]
+
+
+
 
 LOGGING = {
     'version': 1,
