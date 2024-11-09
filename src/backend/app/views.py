@@ -1,5 +1,29 @@
 
 
+# src/backend/app/views.py
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+import os
+
+@csrf_exempt
+def update_email_config(request):
+    if request.method == "POST":
+        data = request.POST
+        os.environ["EMAIL_BACKEND"] = data.get("emailBackend", settings.EMAIL_BACKEND)
+        os.environ["EMAIL_HOST"] = data.get("emailHost", settings.EMAIL_HOST)
+        os.environ["EMAIL_PORT"] = data.get("emailPort", str(settings.EMAIL_PORT))
+        os.environ["EMAIL_USE_TLS"] = str(data.get("emailUseTLS", settings.EMAIL_USE_TLS)).lower()
+        os.environ["EMAIL_HOST_USER"] = data.get("emailUser", settings.EMAIL_HOST_USER)
+        os.environ["EMAIL_HOST_PASSWORD"] = data.get("emailPassword", settings.EMAIL_HOST_PASSWORD)
+        
+        return JsonResponse({"status": "success", "message": "Email configuration updated successfully."})
+    return JsonResponse({"status": "error", "message": "Invalid request"})
+
+
+
+
 # views.py
 
 from rest_framework.decorators import api_view
