@@ -1,3 +1,22 @@
+
+
+
+
+# Dockerfile for Django with channels support
+
+FROM python:3.9
+
+WORKDIR /code
+COPY requirements.txt /code/
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /code/
+EXPOSE 8000
+
+
+
+
 # Dockerfile
 FROM python:3.9
 
