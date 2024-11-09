@@ -1,5 +1,46 @@
 
 
+
+
+# .github/workflows/ci.yml
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r src/backend/requirements.txt
+          npm install --prefix src/frontend
+
+      - name: Run backend tests
+        run: |
+          cd src/backend && python manage.py test
+
+      - name: Run frontend tests
+        run: |
+          cd src/frontend && npm test
+
+
+
+
+
 # ci.yml
 name: CI
 
