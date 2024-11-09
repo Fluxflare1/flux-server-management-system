@@ -1,0 +1,36 @@
+# GitHub Workflow file for CI/CD pipeline setup
+
+name: Deploy Django Application
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install django channels
+
+      - name: Run Tests
+        run: python manage.py test
+
+      - name: Deploy to Server
+        run: |
+          scp -r . user@yourserver:/path/to/project
+          ssh user@yourserver 'cd /path/to/project && docker-compose up -d'
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
