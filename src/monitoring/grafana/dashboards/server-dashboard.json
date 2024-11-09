@@ -1,3 +1,38 @@
+
+
+
+{
+  "dashboard": {
+    "title": "Flux Server Dashboard",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "CPU Usage",
+        "targets": [
+          {
+            "expr": "rate(node_cpu_seconds_total{mode!='idle'}[1m])",
+            "legendFormat": "CPU {{cpu}}"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Memory Usage",
+        "targets": [
+          {
+            "expr": "node_memory_MemTotal_bytes - node_memory_MemFree_bytes",
+            "legendFormat": "Memory Usage"
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+
+
 {
     "title": "Server Dashboard",
     "panels": [
