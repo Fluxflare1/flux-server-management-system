@@ -2,6 +2,17 @@
 
 
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def server_status(request):
+    servers = ServerInstance.objects.all()
+    status_data = [{"id": server.id, "name": server.name, "cpuUsage": server.cpu_usage, "memoryUsage": server.memory_usage} for server in servers]
+    return Response(status_data)
+
+
+
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
