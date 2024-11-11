@@ -1,5 +1,14 @@
 
 
+@api_view(['POST'])
+@permission_classes([IsAdminUser])
+def grant_access(request):
+    data = request.data
+    user = User.objects.get(username=data.get("username"))
+    permission = data.get("permission")
+    user.permissions.add(permission)
+    return Response({"status": "Permission granted"})
+
 
 
 @api_view(['POST'])
