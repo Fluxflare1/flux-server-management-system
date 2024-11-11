@@ -2,6 +2,22 @@
 
 
 
+@api_view(['POST'])
+def update_subscription(request):
+    user = request.user
+    usage = request.data.get("usage")
+    cost = calculate_cost(usage)
+    if user.balance >= cost:
+        user.balance -= cost
+        user.save()
+        return Response({"status": "Subscription updated", "balance": user.balance})
+    else:
+        return Response({"error": "Insufficient balance"}, status=400)
+
+
+
+
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
