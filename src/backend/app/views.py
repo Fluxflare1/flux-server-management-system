@@ -1,5 +1,21 @@
 
 
+
+
+@api_view(['POST'])
+def backup_data(request):
+    # Logic for creating a backup
+    return Response({"status": "Backup created"})
+
+@api_view(['POST'])
+def restore_data(request):
+    # Logic for restoring from backup
+    return Response({"status": "Backup restored"})
+
+
+
+
+
 @api_view(['POST'])
 @permission_classes([IsAdminUser])
 def grant_access(request):
