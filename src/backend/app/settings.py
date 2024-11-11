@@ -1,5 +1,11 @@
 
+import os
 
+# Load environment variables
+API_BASE_URL = os.getenv("API_BASE_URL")
+DB_URI = os.getenv("DB_URI")
+AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY")
+AWS_SECRET_KEY = os.getenv("AWS_SECRET_KEY")
 
 
 
