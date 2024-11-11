@@ -1,5 +1,27 @@
 
 
+
+import React from 'react';
+import ServerStatus from './ServerStatus';
+import SubscriptionPanel from './SubscriptionPanel';
+import BackupRestorePanel from './BackupRestorePanel';
+
+const Dashboard = () => {
+  return (
+    <div className="dashboard-container">
+      <h2>Control Panel Dashboard</h2>
+      <ServerStatus />
+      <SubscriptionPanel />
+      <BackupRestorePanel />
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+
 // src/frontend/components/Dashboard.js
 
 import React from 'react';
