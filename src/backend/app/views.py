@@ -1,5 +1,31 @@
 
 
+
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import ServerInstance
+from .serializers import ServerInstanceSerializer
+
+@api_view(['POST'])
+def provision_server(request):
+    data = request.data
+    server_type = data.get("server_type")
+
+    # Logic to provision server based on server_type (Dedicated, VPS, Shared)
+    new_server = ServerInstance.objects.create(
+        server_type=server_type,
+        user=request.user,
+        status="Provisioning"
+    )
+    return Response(ServerInstanceSerializer(new_server).data, status=201)
+
+
+
+
+
+
 # src/backend/app/views.py
 
 from django.http import JsonResponse
