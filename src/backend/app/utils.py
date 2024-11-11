@@ -1,3 +1,18 @@
+
+
+AWS_RATE_CPU_HOUR = 0.1  # Example rate per CPU hour
+AWS_RATE_BANDWIDTH_GB = 0.02  # Example rate per GB of bandwidth
+PROFIT_MARGIN = 1.10  # 10% profit markup
+
+def calculate_usage_cost(usage):
+    cpu_cost = usage.get("cpu_hours", 0) * AWS_RATE_CPU_HOUR
+    bandwidth_cost = usage.get("bandwidth_gb", 0) * AWS_RATE_BANDWIDTH_GB
+    total_cost = (cpu_cost + bandwidth_cost) * PROFIT_MARGIN
+    return total_cost
+
+
+
+
 import boto3
 
 def provision_server(hosting_type, resources):
