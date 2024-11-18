@@ -1,5 +1,13 @@
 
 
+from .views.activity_logs import activity_logs_view
+
+urlpatterns += [
+    path('activity-logs/', activity_logs_view, name='activity-logs'),
+]
+
+
+
 from .views.notifications import notifications_view
 
 urlpatterns += [
