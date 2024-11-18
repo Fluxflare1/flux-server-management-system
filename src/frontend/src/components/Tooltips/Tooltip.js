@@ -1,4 +1,13 @@
 
+
+
+<Tooltip id="server-name" contextKey="server_name" />
+<Tooltip id="server-status" contextKey="server_status" />
+
+
+
+
+
 // Path: frontend/src/components/Tooltips/Tooltip.js
 import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
