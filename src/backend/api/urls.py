@@ -1,3 +1,13 @@
+
+from .views.search import global_search_view
+
+urlpatterns += [
+    path('search/', global_search_view, name='global-search'),
+]
+
+
+
+
 from django.urls import path
 from .views.system_health import system_health_view
 
