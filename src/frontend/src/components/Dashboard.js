@@ -1,7 +1,5 @@
 
-
-
-// components/Dashboard.js
+// src/components/Dashboard.js
 
 import React, { useEffect, useState } from 'react';
 import { getServerList, fetchUserDetails } from '../services/apiService';
@@ -9,6 +7,8 @@ import { getServerList, fetchUserDetails } from '../services/apiService';
 const Dashboard = () => {
   const [servers, setServers] = useState([]);
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,13 +18,18 @@ const Dashboard = () => {
 
         const serverList = await getServerList();
         setServers(serverList.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
+      } catch (err) {
+        setError('Failed to load data. Please try again.');
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <div>
@@ -40,8 +45,6 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-
 
 
 import React from 'react';
