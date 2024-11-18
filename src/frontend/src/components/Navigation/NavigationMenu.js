@@ -1,3 +1,5 @@
+<NavigationMenu userRole="admin" />
+
 
 
 // Path: frontend/src/components/Navigation/NavigationMenu.js
