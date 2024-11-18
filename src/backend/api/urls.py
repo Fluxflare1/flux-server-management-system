@@ -1,4 +1,13 @@
 
+
+from .views.notifications import notifications_view
+
+urlpatterns += [
+    path('notifications/', notifications_view, name='notifications'),
+]
+
+
+
 from .views.search import global_search_view
 
 urlpatterns += [
