@@ -1,6 +1,49 @@
 
 
 
+// components/Dashboard.js
+
+import React, { useEffect, useState } from 'react';
+import { getServerList, fetchUserDetails } from '../services/apiService';
+
+const Dashboard = () => {
+  const [servers, setServers] = useState([]);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userDetails = await fetchUserDetails();
+        setUser(userDetails.data);
+
+        const serverList = await getServerList();
+        setServers(serverList.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      <h1>Welcome, {user.name}</h1>
+      <h2>Your Servers:</h2>
+      <ul>
+        {servers.map((server) => (
+          <li key={server.id}>{server.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Dashboard;
+
+
+
+
 import React from 'react';
 import ServerStatus from './ServerStatus';
 import SubscriptionPanel from './SubscriptionPanel';
