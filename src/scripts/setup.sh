@@ -1,5 +1,15 @@
 
 
+# Setup script for frontend dependencies
+echo "Setting up frontend dependencies..."
+cd ../frontend
+yarn install
+echo "Frontend dependencies installed successfully!"
+
+
+
+
+
 #!/bin/bash
 
 # Setup script for backend dependencies
