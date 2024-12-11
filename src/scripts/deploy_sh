@@ -1,1 +1,5 @@
+#!/bin/bash
 
+echo "Deploying Flux Server Management System..."
+docker-compose -f ../config/docker-compose.yml up --build -d
+echo "Deployment completed successfully!"
