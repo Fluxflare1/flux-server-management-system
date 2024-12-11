@@ -1,5 +1,32 @@
 
 
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ../src/backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ../config/environments/development.env
+    volumes:
+      - ../src/backend:/app
+
+  frontend:
+    build:
+      context: ../src/frontend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../config/environments/development.env
+    volumes:
+      - ../src/frontend:/app
+
+
+
+
 version: '3.8'
 
 services:
