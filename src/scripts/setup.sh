@@ -1,3 +1,16 @@
+
+
+#!/bin/bash
+
+# Setup script for backend dependencies
+echo "Setting up backend dependencies..."
+cd ../backend
+pip install -r requirements.txt
+echo "Backend dependencies installed successfully!"
+
+
+
+
 #!/bin/bash
 # setup.sh
 
