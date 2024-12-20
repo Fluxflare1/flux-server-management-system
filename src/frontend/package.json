@@ -1,5 +1,11 @@
 
 
+"dependencies": {
+    "@sentry/react": "^7.60.0",
+    "@sentry/tracing": "^7.60.0"
+}
+
+
 
 "recharts": "^2.1.9"
 
