@@ -1,0 +1,27 @@
+{
+    "dashboard": {
+        "title": "Error Logs Dashboard",
+        "panels": [
+            {
+                "type": "graph",
+                "title": "Error Count Over Time",
+                "targets": [
+                    {
+                        "expr": "sum(rate(errors_total[5m]))",
+                        "legendFormat": "Errors"
+                    }
+                ]
+            },
+            {
+                "type": "table",
+                "title": "Recent Errors",
+                "targets": [
+                    {
+                        "expr": "errors_total",
+                        "legendFormat": "{{instance}}: {{error}}"
+                    }
+                ]
+            }
+        ]
+    }
+}
