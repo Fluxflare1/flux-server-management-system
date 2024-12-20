@@ -1,3 +1,13 @@
+
+from django.urls import path
+from app.consumers import NotificationConsumer
+
+websocket_urlpatterns = [
+    path("ws/notifications/", NotificationConsumer.as_asgi()),
+]
+
+
+
 # routing.py - Django Channels routing setup for WebSocket communication
 
 from django.urls import path
