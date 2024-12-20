@@ -1,5 +1,20 @@
 
 
+
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+
+def send_notification(user_id, title, message):
+    channel_layer = get_channel_layer()
+    data = {"title": title, "message": message}
+
+    async_to_sync(channel_layer.group_send)(
+        f"user_{user_id}",
+        {"type": "send_notification", "data": data},
+    )
+
+
+
 AWS_RATE_CPU_HOUR = 0.1  # Example rate per CPU hour
 AWS_RATE_BANDWIDTH_GB = 0.02  # Example rate per GB of bandwidth
 PROFIT_MARGIN = 1.10  # 10% profit markup
