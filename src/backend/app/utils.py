@@ -1,6 +1,20 @@
 
 
 
+from django.core.mail import send_mail
+
+def send_email_notification(email, subject, message):
+    send_mail(subject, message, "noreply@example.com", [email])
+
+def notify_user(user, title, message):
+    # WebSocket Notification
+    send_notification(user.id, title, message)
+
+    # Email Notification
+    send_email_notification(user.email, title, message)
+
+
+
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
