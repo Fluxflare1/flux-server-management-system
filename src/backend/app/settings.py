@@ -1,5 +1,20 @@
 
 
+INSTALLED_APPS += [
+    "channels",
+]
+
+ASGI_APPLICATION = "app.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
+
+
+
+
 MIDDLEWARE += [
     "app.middleware.RBACMiddleware",
 ]
