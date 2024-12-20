@@ -1,5 +1,33 @@
 
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+@csrf_exempt
+def handle_form_submission(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            name = data.get('name')
+            email = data.get('email')
+            message = data.get('message')
+
+            if not name or not email or not message:
+                return JsonResponse({'error': 'All fields are required.'}, status=400)
+
+            # Process form data (e.g., save to database, send an email)
+            return JsonResponse({'message': 'Form submitted successfully!'}, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
+
+    return JsonResponse({'error': 'Invalid HTTP method.'}, status=405)
+
+
+
+
+
 from app.utils import send_notification
 
 # Notify user with ID 1
