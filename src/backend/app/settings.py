@@ -1,21 +1,4 @@
 
-from django.utils.translation import gettext_lazy as _
-
-LANGUAGES = [
-    ("en", _("English")),
-    ("es", _("Spanish")),
-    ("fr", _("French")),
-    ("de", _("German")),
-    ("zh-hans", _("Simplified Chinese")),
-]
-
-LOCALE_PATHS = [BASE_DIR / "locale"]
-
-MIDDLEWARE += [
-    "django.middleware.locale.LocaleMiddleware",
-]
-
-
 
 INSTALLED_APPS += [
     "channels",
