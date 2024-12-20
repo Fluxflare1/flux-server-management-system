@@ -1,5 +1,20 @@
 
 
+#!/bin/bash
+
+echo "Setting up desktop shortcuts..."
+
+if [[ "$OSTYPE" == "linux-gnu"* || "$OSTYPE" == "darwin"* ]]; then
+    bash ./create_shortcut.sh
+elif [[ "$OSTYPE" == "msys"* || "$OSTYPE" == "cygwin"* ]]; then
+    pwsh ./create_shortcut.ps1
+else
+    echo "Unsupported operating system."
+fi
+
+
+
+
 # Setup script for frontend dependencies
 echo "Setting up frontend dependencies..."
 cd ../frontend
