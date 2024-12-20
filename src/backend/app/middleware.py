@@ -1,5 +1,29 @@
 
 
+from django.http import JsonResponse
+
+class RBACMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        user = request.user
+
+        # Check if user is authenticated
+        if not user.is_authenticated:
+            return JsonResponse({"error": "Unauthorized"}, status=401)
+
+        # Check permissions based on requested URL
+        if request.path.startswith("/admin") and not user.has_permission("manage_users"):
+            return JsonResponse({"error": "Forbidden"}, status=403)
+
+        if request.path.startswith("/developer") and not user.has_permission("access_developer_tools"):
+            return JsonResponse({"error": "Forbidden"}, status=403)
+
+        return self.get_response(request)
+
+
+
 
 from django.core.cache import cache
 from django.http import JsonResponse
