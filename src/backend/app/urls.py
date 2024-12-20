@@ -1,5 +1,15 @@
 
 
+from django.urls import path
+from .views import handle_form_submission
+
+urlpatterns = [
+    # Other routes
+    path('api/submit-form/', handle_form_submission, name='handle_form_submission'),
+]
+
+
+
 
 # src/backend/app/urls.py
 
