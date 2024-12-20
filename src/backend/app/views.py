@@ -1,5 +1,11 @@
 
 
+from app.utils import send_notification
+
+# Notify user with ID 1
+send_notification(1, "Backup Completed", "Your scheduled backup has completed successfully.")
+
+
 
 
 @api_view(['POST'])
