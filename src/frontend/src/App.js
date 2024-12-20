@@ -1,5 +1,7 @@
 
 
+import "./notifications";
+
 
 
 // src/frontend/src/App.js
