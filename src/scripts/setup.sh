@@ -1,6 +1,27 @@
 
 
 #!/bin/bash
+echo "Initializing Database..."
+
+if [ -z "$DATABASE_URL" ]; then
+  echo "DATABASE_URL is not set. Exiting..."
+  exit 1
+fi
+
+DB_HOST=$(echo $DATABASE_URL | cut -d'@' -f2 | cut -d':' -f1)
+DB_PORT=$(echo $DATABASE_URL | cut -d':' -f3 | cut -d'/' -f1)
+DB_NAME=$(echo $DATABASE_URL | cut -d'/' -f4)
+DB_USER=$(echo $DATABASE_URL | cut -d':' -f2 | cut -d'/' -f3)
+DB_PASS=$(echo $DATABASE_URL | cut -d':' -f2 | cut -d'@' -f1 | cut -d'/' -f3)
+
+psql -h $DB_HOST -p $DB_PORT -U $DB_USER -c "CREATE DATABASE $DB_NAME;" || echo "Database already exists."
+
+echo "Database initialized successfully!"
+
+
+
+
+#!/bin/bash
 
 echo "Setting up desktop shortcuts..."
 
