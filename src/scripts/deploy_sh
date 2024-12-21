@@ -1,4 +1,32 @@
 
+
+#!/bin/bash
+echo "Deploying Application..."
+
+bash src/scripts/detect_framework.sh
+
+if [ -f "src/backend/manage.py" ]; then
+  echo "Starting Django server..."
+  docker-compose up django_app
+elif [ -f "src/frontend/package.json" ]; then
+  echo "Starting Node.js server..."
+  docker-compose up node_app
+elif [ -f "src/php-app/index.php" ]; then
+  echo "Starting PHP server..."
+  docker-compose up php_app
+elif [ -f "src/ruby-app/Gemfile" ]; then
+  echo "Starting Ruby server..."
+  docker-compose up ruby_app
+elif [ -f "src/go-app/main.go" ]; then
+  echo "Starting Go server..."
+  docker-compose up go_app
+else
+  echo "No framework detected. Deployment failed."
+fi
+
+
+
+
 #!/bin/bash
 echo "Running Migrations..."
 python src/backend/manage.py migrate
