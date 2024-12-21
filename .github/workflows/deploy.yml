@@ -1,5 +1,13 @@
 
 
+- name: Run Database Migrations
+  run: |
+    npm install -g sequelize-cli
+    sequelize db:migrate
+
+
+
+
 name: Global Deployment
 
 on:
