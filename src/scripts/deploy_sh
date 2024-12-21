@@ -1,3 +1,11 @@
+
+#!/bin/bash
+echo "Running Migrations..."
+python src/backend/manage.py migrate
+echo "Migrations Complete!"
+
+
+
 #!/bin/bash
 
 echo "Deploying Flux Server Management System..."
