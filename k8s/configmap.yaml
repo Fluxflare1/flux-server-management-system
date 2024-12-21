@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flux-config
+data:
+  ENV: production
+  DATABASE_URL: mysql://user:password@db:3306/fluxdb
