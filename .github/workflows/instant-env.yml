@@ -1,0 +1,25 @@
+name: Instant Environments
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  setup-environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure Environment
+        run: bash src/scripts/configure_environment.sh
+
+      - name: Build and Start Containers
+        run: docker-compose up --build -d
+
+      - name: Run Tests
+        run: docker-compose exec app pytest tests/
+
+      - name: Deploy Preview
+        run: echo "Preview URL: http://$GITHUB_ENVIRONMENT.example.com"
