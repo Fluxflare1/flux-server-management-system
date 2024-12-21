@@ -1,5 +1,18 @@
 
 
+import os
+from dotenv import load_dotenv
+
+# Load environment-specific .env file
+env_file = f"config/environments/{os.getenv('APP_ENV', 'development')}.env"
+load_dotenv(env_file)
+
+# Load environment variables
+DATABASE_URL = os.getenv('DATABASE_URL')
+DEBUG = os.getenv('DEBUG') == 'true'
+
+
+
 INSTALLED_APPS += [
     "channels",
 ]
