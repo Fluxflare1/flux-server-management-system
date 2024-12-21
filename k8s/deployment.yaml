@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux-server
+  labels:
+    app: flux-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flux-server
+  template:
+    metadata:
+      labels:
+        app: flux-server
+    spec:
+      containers:
+        - name: flux-server
+          image: fluxflare/flux-server:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: flux-config
+            - secretRef:
+                name: flux-secrets
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"
+            requests:
+              memory: "256Mi"
+              cpu: "0.25"
