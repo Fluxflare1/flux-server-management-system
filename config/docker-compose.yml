@@ -1,5 +1,54 @@
 
 
+version: '3.9'
+services:
+  django_app:
+    build:
+      context: ./src/backend/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=${APP_ENV}
+      - DATABASE_URL=${DATABASE_URL}
+
+  node_app:
+    build:
+      context: ./src/frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=${APP_ENV}
+
+  php_app:
+    image: php:8.1-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/php-app:/var/www/html
+
+  ruby_app:
+    image: ruby:3.1
+    ports:
+      - "9292:9292"
+    volumes:
+      - ./src/ruby-app:/app
+      - ./src/ruby-app/Gemfile:/usr/src/app/Gemfile
+    command: bash -c "bundle install && rackup -o 0.0.0.0"
+
+  go_app:
+    image: golang:1.20
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./src/go-app:/go/src/app
+    working_dir: /go/src/app
+    command: go run main.go
+
+
+
+
 version: '3.8'
 
 services:
